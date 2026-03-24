@@ -11,7 +11,7 @@ function News({ category }) {
   const fetchNewData = async () => {
     try {
       setLoader(true)
-      const response = await fetch(`https://newsdata.io/api/1/latest?category=${category}&language=en&size=9&apikey=fillyourapikey`)
+      const response = await fetch(`https://newsdata.io/api/1/latest?category=${category}&language=en&size=9&apikey=pub_7640181061e56f2b053913a24ec2f3e61394c`)
       const data = await response.json()
       console.log(data.results)
       setAllNews(data.results)
@@ -68,7 +68,7 @@ function News({ category }) {
             </p>
           </div>
           <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
-            {loader ? Array.from({ length: 6 }).map((_, i) => <NewsCardSkeleton key={i} />) : allNews?.map((news, inx) => {
+            {loader ? Array.from({ length: 6 })?.map((_, i) => <NewsCardSkeleton key={i} />) : allNews?.map((news, inx) => {
               return <NewsCard key={"new" + inx} category={category} title={news?.title} description={news?.description} pubdate={news.pubDate} url={news.link
               } image={news.image_url
               } />
